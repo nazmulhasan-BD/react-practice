@@ -14,7 +14,8 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Header></Header>,
-    errorElement: <p>edkjflsdjlfj;</p>,
+    // 2nd method for page error showing
+    // errorElement: <p>edkjflsdjlfj;</p>,
     children: [
       {
         path:'home',
@@ -30,11 +31,11 @@ const router = createBrowserRouter([
         element: <EachMeal></EachMeal>,
         loader : ({params})=> fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.mealId}`)
       },
-      // this is for error element:
-      // {
-      //   path: '*',
-      //   element: <div> page not found or use a component </div>
-      // }
+      // 1st method: this is for error element:
+      {
+        path: '*',
+        element: <div> page not found or use a component </div>
+      }
     ]
   },
 ]);
